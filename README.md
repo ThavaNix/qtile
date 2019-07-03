@@ -1,3 +1,0 @@
-# qtile
-# qtile
-# qtile
