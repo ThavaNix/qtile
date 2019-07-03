@@ -11,11 +11,14 @@ try :
 	from typing import List  # noqa: F401
 except ImportError:
 	pass
-
-
-
 mod = "mod4"
-home = os.path.expanduser('~')
+
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+
 
 keys = [
     # Switch between windows in current stack pane
@@ -146,10 +149,6 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])
-@hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 
 
