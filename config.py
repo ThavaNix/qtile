@@ -2,7 +2,7 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
+from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule , Match
 from libqtile.command import lazy, Client
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
@@ -63,7 +63,7 @@ for i in groups:
 # for those keen on auto-start
 group_spawns = [None, None, None, None, None, None, None, None]
 # auto-sort programs
-group_matches = [None, None, None, None, None, None, None, None]
+group_matches = [[Match(wm_class=["Atom" ,"atom",],),], None, None, None, None, None, None, None]
 # if labels != keys
 group_labels = ['1', '2', '3', '4', '5', '6', '7', '8']
 group_names = ['ampersand', 'eacute', 'quotedbl', 'apostrophe', 'parenleft', 'minus', 'egrave', 'exclam'] #list("asdfuiop")
@@ -149,7 +149,7 @@ floating_layout = layout.Floating(float_rules=[
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 
 

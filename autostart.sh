@@ -1,16 +1,9 @@
 
 
-function run {
-  if ! pgrep $1 ;
-  then
-    $@&
-  fi
-}
-
-run pamac-tray
-run volumeicon
-run nm-applet
-compton
+pamac-tray &
+volumeicon &
+nm-applet &
+compton &
 
 
 
