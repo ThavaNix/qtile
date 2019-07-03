@@ -69,7 +69,7 @@ for i in groups:
 # for those keen on auto-start
 group_spawns = [None, None, None, None, None, None, None, None]
 # auto-sort programs
-group_matches = [[Match(wm_class=["Atom" ,"atom",],),], None, None, None, None, None, None, None]
+group_matches = [[Match(wm_class=["Atom" ,"atom",],),], [Match(wm_class=["Firefox" ,"firefox",],),], [Match(wm_class=["Thunar" ,"thunar",],),], None, None, None, None, None]
 # if labels != keys
 group_labels = ['1', '2', '3', '4', '5', '6', '7', '8']
 group_names = ['ampersand', 'eacute', 'quotedbl', 'apostrophe', 'parenleft', 'minus', 'egrave', 'exclam'] #list("asdfuiop")
