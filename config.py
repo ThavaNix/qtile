@@ -2,23 +2,25 @@ import os
 import re
 import socket
 import subprocess
+
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule , Match
 from libqtile.command import lazy, Client
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
 
+
 try :
 	from typing import List  # noqa: F401
 except ImportError:
 	pass
+
 mod = "mod4"
 
 
 @hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
-
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/scipts/autostart.sh')
+    subprocess.call([home])
 
 keys = [
     # Switch between windows in current stack pane
