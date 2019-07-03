@@ -51,6 +51,7 @@ keys = [
     Key([mod , "shift"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+	Key([mod], "d", lazy.spawn("rofi -show drun")),
 ]
 '''
 groups = [Group(i) for i in "asdfuiop"]
@@ -116,7 +117,7 @@ keys.extend([
 
 
 layouts = [
-    layout.MonadTall(),
+    layout.MonadTall(margin=8, border_width=4, border_focus="orange", border_normal="#4c5666"),
     #layout.Stack(num_stacks=2)
 ]
 
@@ -131,13 +132,13 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox( highlight_method = "text",),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            24,
+            24, background="#242636",
         ),
     ),
 ]

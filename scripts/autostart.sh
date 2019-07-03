@@ -8,9 +8,9 @@ function run {
 run pamac-tray &
 run volumeicon &
 run nm-applet &
-
-
-
+feh --bg-scale ~/Images/wall.jpg
+numlockx on &
+compton &
 
 
 
