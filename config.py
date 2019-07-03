@@ -3,7 +3,7 @@ import re
 import socket
 import subprocess
 
-from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule , Match
+from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule , Match, ScratchPad, DropDown
 from libqtile.command import lazy, Client
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
@@ -15,12 +15,12 @@ except ImportError:
 	pass
 
 mod = "mod4"
-
+home = os.path.expanduser('~')
 
 @hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/scipts/autostart.sh')
-    subprocess.call([home])
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/scripts/autostart.sh'])
 
 keys = [
     # Switch between windows in current stack pane
@@ -90,6 +90,28 @@ for i in groups:
             Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
         ]
     )
+
+
+
+groups.append(
+    ScratchPad("scratchpad", [
+        # define a drop down terminal.
+        # it is placed in the upper third of screen by default.
+        DropDown("term", "/usr/bin/termite", opacity=0.88, height=0.35, width=0.80, ),
+
+        # define another terminal exclusively for qshell at different position
+        DropDown("qshell", "/usr/bin/termite -e qshell",
+                 x=0.05, y=0.4, width=0.9, height=0.6, opacity=0.9,
+                 on_focus_lost_hide=True)
+    ]), )
+
+keys.extend([
+    # Scratchpad
+    # toggle visibiliy of above defined DropDown named "term"
+    Key([], 'F12', lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([], 'F11', lazy.group['scratchpad'].dropdown_toggle('qshell')),
+])
+
 
 
 
