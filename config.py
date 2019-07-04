@@ -132,7 +132,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox( highlight_method = "text",),
+                widget.GroupBox( highlight_method = "block<",),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Systray(),

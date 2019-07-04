@@ -10,7 +10,7 @@ run volumeicon &
 run nm-applet &
 feh --bg-scale ~/Images/wall.jpg
 numlockx on &
-compton &
+compton -C ~/config/qtile/scripts/compton.conf &
 
 
 
