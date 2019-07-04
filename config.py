@@ -51,7 +51,7 @@ keys = [
     Key([mod , "shift"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
-	Key([mod], "d", lazy.spawn("rofi -show drun")),
+	Key([mod], "d", lazy.spawn("dmenu_run -b -fn 'UbuntuMono Nerd Font:size=13' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'dmenu:'")),
 ]
 '''
 groups = [Group(i) for i in "asdfuiop"]
@@ -132,11 +132,39 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox( highlight_method = "block",),
+                widget.GroupBox(
+					fontsize = 20,
+                    margin_y = 0,
+                    margin_x = 0,
+                    padding_y = 0,
+                    padding_x = 5,
+                    borderwidth = 1,
+                    active = '#ff8800',
+                    inactive = "#000000",
+                    rounded = False,
+                    highlight_method = "block",
+                    this_current_screen_border = '#4d88e8',
+                    this_screen_border = '#ff8800',),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+				widget.Image(
+						scale = True,
+                        filename = "~/.config/qtile/img3.png",
+						background='#242636',
+						),
+				widget.CurrentLayoutIcon(background='#8b3f8c'),
+				widget.Image(
+						scale = True,
+                        filename = "~/.config/qtile/img2.png",
+						background='#242636',
+						),
+				widget.Systray(background='#42aabd'),
+				widget.Image(
+						scale = True,
+                        filename = "~/.config/qtile/img1.png",
+						background='#242636',
+						),
+				widget.Clock(format='%Y-%m-%d %a %I:%M %p' , background='#0b0eb8'),
             ],
             24, background="#242636",
         ),
